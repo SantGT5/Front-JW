@@ -1,0 +1,28 @@
+.imgLogo {
+  width: 7em;
+}
+
+.center {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+.borderLogin {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    margin-top: 13em;
+    border-radius: 15px;
+}
+
+.login {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  height: 25em;
+  width: 30em;
+}
+
+.margin{
+    margin-bottom: 1em;
+    width: 10em;
+}
