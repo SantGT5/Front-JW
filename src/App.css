@@ -6,7 +6,7 @@
 
 .borderLogin {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-margin:5em;
+  margin: 5em;
   border-radius: 15px;
 }
 
@@ -64,9 +64,9 @@ margin:5em;
 .profile {
   display: grid;
   justify-content: center;
-  margin: 3em;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   border-radius: 10px;
+  margin: 3em;
   width: 20em;
   height: 23em;
 }
@@ -96,4 +96,19 @@ margin:5em;
 .spaceBTN {
   margin-left: 0.5em;
   margin-right: 0.5em;
+}
+
+.editeSIZE {
+  margin: 4em;
+}
+
+.edite {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 10px;
+  width: 25em;
+  height: 22em;
+}
+
+.btnProfile {
+  margin: 1.5em;
 }

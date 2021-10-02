@@ -7,6 +7,7 @@ import PrivateRoute from "./PrivateRouter/PrivateRouter";
 import { Login } from "./Component/Login";
 import { NavBar } from "./Component/NavBar";
 import { Profile } from "./Component/Profile";
+import { Edite } from "./Component/Edite";
 import { Test } from "./Component/Test";
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
     <NavBar />
       <AuthContextComponent>
         <Switch>
-        <PrivateRoute exact path="/" component={NavBar} />
+        <PrivateRoute exact path="/edite/:id" component={Edite} />
         <PrivateRoute exact path="/profile" component={Profile} />
           {loggedInUser.token ? (
             <Route exact path="/" component={Test} />
