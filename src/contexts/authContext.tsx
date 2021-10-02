@@ -1,23 +1,28 @@
 import { createContext, useState, useEffect } from "react";
-
-interface userLogged{
-  loggedInUser: any,
-  setLoggedInUser: any
+interface userLogged {
+  loggedInUser: any;
+  setLoggedInUser: any;
 }
 
 const authContext = createContext({} as userLogged);
 
 function AuthContextComponent(props: any) {
-  const [loggedInUser, setLoggedInUser] = useState({ user: {}, token: "" });
+  const [loggedInUser, setLoggedInUser] = useState();
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("loggedInUser");
+    async function fetchUser() {
+      try {
+        const storedUser = await localStorage.getItem("loggedInUser");
 
-    const loggedInUser = JSON.parse(storedUser || '""');
+        const loggedInUser = await JSON.parse(storedUser || '""');
 
-    if (loggedInUser.user) {
-      setLoggedInUser({ ...loggedInUser });
+          setLoggedInUser({ ...loggedInUser });
+
+      } catch (err) {
+        console.log(err);
+      }
     }
+    fetchUser();
   }, []);
 
   console.log("VALOR ATUAL DO CONTEXT =>", loggedInUser);

@@ -1,27 +1,45 @@
+// import Typed from "typed.js";
+
 import { authContext } from "../contexts/authContext";
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import api from "../api/api";
 
+// Configuração do AXIOS.
+import api from "../api/api";
+// Mensagem de alerta
+import swal from "sweetalert";
+// Componentes globais
 import { Input } from "../Global/Input";
 import { Button } from "../Global/Button";
 import { Checkbox } from "../Global/Checkbox";
 
+// Controller do login.
 interface login {
   email: string;
   password: string;
 }
 
-export const Login = () => {
+export const Login = (props:any) => {
   const { setLoggedInUser } = useContext(authContext);
   const [showpass, setShowPass] = useState(false);
-  let history = useHistory();
+  const history = useHistory();
   const [state, setState] = useState<login>({
     email: "",
     password: "",
   });
 
-  console.log(state);
+  // const el: any = useRef<HTMLDivElement>();
+
+  // useEffect(() => {
+  //   const typed = new Typed(el.current, {
+  //     strings: ["Handy", "Mandy", "Candy", "More Strings"],
+  //     typeSpeed: 100,
+  //     loop: true
+  //   });
+  //   return () => {
+  //     typed.destroy();
+  //   };
+  // }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setState({
@@ -38,9 +56,8 @@ export const Login = () => {
   async function handleSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
     try {
+      
       const response = await api.post("/login", state);
-
-console.log( response )
 
       setLoggedInUser({ ...response.data });
 
@@ -48,16 +65,22 @@ console.log( response )
         "loggedInUser",
         JSON.stringify({ ...response.data })
       );
-      
-      response && history.push("/home");
 
+      response && history.push("/profile");
     } catch (err: any) {
       console.log(err.response);
+
+      err.response &&
+        swal("¡Intentalo de nuevo!", err.response.data.msg, "error");
     }
   }
 
   return (
     <form onSubmit={handleSubmit}>
+      {/* <div>
+        <h1 ref={el}></h1>
+      </div> */}
+
       <div className="center">
         <div className="borderLogin">
           <div className="login">
