@@ -9,6 +9,7 @@ import { NavBar } from "./Component/NavBar";
 import { Profile } from "./Component/Profile";
 import { Edite } from "./Component/Edite";
 import { Signup } from "./Component/Signup";
+import { Search } from "./Component/Search"
 import { Test } from "./Component/Test";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Switch>
           <PrivateRoute exact path="/edite/:id" component={Edite} />
           <PrivateRoute exact path="/profile" component={Profile} />
+          <PrivateRoute exact path="/search" component={Search} />
           <PrivateRoute exact path="/" component={Test} />
 
           {loggedInUser.token ? (
