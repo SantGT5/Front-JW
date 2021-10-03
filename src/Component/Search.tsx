@@ -43,13 +43,13 @@ export const Search = () => {
         className="margin form-control"
         onChange={handleChange}
       />
-      <div>
+      <ol>
         {status.map((elem: any) => {
 
-            <span>{elem.name}</span>
+            <li>{elem.name}</li>
 
         })}
-      </div>
+      </ol>
     </div>
   );
 };
