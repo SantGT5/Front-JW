@@ -18,6 +18,16 @@
   width: 30em;
 }
 
+
+.signup{
+
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  height: 31em;
+  width: 30em;
+
+}
 .margin {
   margin-bottom: 1em;
   width: 12em;
@@ -111,4 +121,12 @@
 
 .btnProfile {
   margin: 1.5em;
+}
+
+.btnNew{
+  margin-top: 1em;
+}
+
+.textDecoration{
+  text-decoration: none;
 }

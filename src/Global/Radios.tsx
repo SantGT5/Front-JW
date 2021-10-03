@@ -2,9 +2,11 @@ interface props {
   type: string;
   value: string;
   label: string;
-  name: string
-  checked: boolean
-  onChange?: React.ChangeEventHandler<HTMLInputElement>
+  name: string;
+  checked: boolean;
+  htmlFor: string;
+  id: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 export const Radios = (props: props) => {
@@ -13,13 +15,13 @@ export const Radios = (props: props) => {
       <input
         className="form-check-input"
         type={props.type}
-        name={ props.name }
-        id="flexRadioDefault1"
+        name={props.name}
+        id={props.id}
         value={props.value}
         onChange={props.onChange}
-        checked= { props.checked }
+        checked={props.checked}
       />
-      <label className="form-check-label" htmlFor="flexRadioDefault1">
+      <label className="form-check-label" htmlFor={props.htmlFor}>
         {props.label}
       </label>
     </div>

@@ -8,6 +8,7 @@ import { Login } from "./Component/Login";
 import { NavBar } from "./Component/NavBar";
 import { Profile } from "./Component/Profile";
 import { Edite } from "./Component/Edite";
+import { Signup } from "./Component/Signup";
 import { Test } from "./Component/Test";
 
 function App() {
@@ -17,11 +18,12 @@ function App() {
 
   return (
     <BrowserRouter>
-    <NavBar />
+      <NavBar />
       <AuthContextComponent>
         <Switch>
-        <PrivateRoute exact path="/edite/:id" component={Edite} />
-        <PrivateRoute exact path="/profile" component={Profile} />
+          <PrivateRoute exact path="/edite/:id" component={Edite} />
+          <PrivateRoute exact path="/profile" component={Profile} />
+          <Route exact path="/Signup" component={Signup} />
           {loggedInUser.token ? (
             <Route exact path="/" component={Test} />
           ) : (

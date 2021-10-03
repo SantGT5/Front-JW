@@ -1,50 +1,33 @@
-// import Typed from "typed.js";
-
-import { authContext } from "../contexts/authContext";
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
-
-// Configuração do AXIOS.
 import api from "../api/api";
-// Mensagem de alerta
 import swal from "sweetalert";
-// Componentes globais
+
 import { Input } from "../Global/Input";
 import { Button } from "../Global/Button";
 import { Checkbox } from "../Global/Checkbox";
 
-// Controller do login.
-interface login {
+interface signup {
+  name: string;
   email: string;
   password: string;
 }
 
-export const Login = (props: any) => {
-  const { setLoggedInUser } = useContext(authContext);
-  const [showpass, setShowPass] = useState(false);
+export const Signup = () => {
   const history = useHistory();
-  const [state, setState] = useState<login>({
+  const [showpass, setShowPass] = useState(false);
+  const [status, setState] = useState<signup>({
+    name: "",
     email: "",
     password: "",
   });
 
-  // const el: any = useRef<HTMLDivElement>();
+  console.log("status -> ", status);
 
-  // useEffect(() => {
-  //   const typed = new Typed(el.current, {
-  //     strings: ["Handy", "Mandy", "Candy", "More Strings"],
-  //     typeSpeed: 100,
-  //     loop: true
-  //   });
-  //   return () => {
-  //     typed.destroy();
-  //   };
-  // }, []);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setState({
-      ...state,
-      [e.currentTarget.name]: e.currentTarget.value,
+      ...status,
+      [event.currentTarget.name]: event.currentTarget.value,
     });
   };
 
@@ -56,19 +39,10 @@ export const Login = (props: any) => {
   async function handleSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
     try {
-      const response = await api.post("/login", state);
+      const response = await api.post("/signup", status);
 
-      setLoggedInUser({ ...response.data });
-
-      localStorage.setItem(
-        "loggedInUser",
-        JSON.stringify({ ...response.data })
-      );
-
-      response && history.push("/profile");
+      response && history.push("/login");
     } catch (err: any) {
-      console.log(err.response);
-
       err.response &&
         swal("¡Intentalo de nuevo!", err.response.data.msg, "error");
     }
@@ -76,40 +50,48 @@ export const Login = (props: any) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {/* <div>
-        <h1 ref={el}></h1>
-      </div> */}
-
       <div className="center">
         <div className="borderLogin">
-          <div className="login">
-            <h2 className="margin">Iniciar sesión</h2>
+          <div className="signup">
+            <h2 className="margin">Crear cuenta</h2>
+
+            <Input
+              label="Escriba su nombre"
+              type="text"
+              value={status.name}
+              name="name"
+              className="margin form-control"
+              onChange={handleChange}
+            />
+
             <Input
               label="Escriba su correo"
-              className="margin form-control"
               type="text"
-              value={state.email}
+              value={status.email}
               name="email"
+              className="margin form-control"
               onChange={handleChange}
             />
+
             <Input
               label="Escriba su contraseña"
-              className="margin form-control"
               type={showpass === false ? "password" : "text"}
-              value={state.password}
+              value={status.password}
               name="password"
+              className="margin form-control"
               onChange={handleChange}
             />
+
             <Checkbox
               des="Mostrar contraseña"
               className="margin form-check-input"
               onChange={handleClick}
               checked={showpass === false ? false : true}
             />
-            <Button type="submit" des="Iniciar sesión" />
+            <Button type="submit" des="Siguiente" />
             <span className="btnNew">
               ¿Nuevo por aquí?{" "}
-              <Link className="textDecoration" to={"/signup"}>
+              <Link className="textDecoration" to={"/login"}>
                 Crear cuenta.
               </Link>
             </span>
