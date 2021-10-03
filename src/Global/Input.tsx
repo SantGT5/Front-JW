@@ -3,7 +3,7 @@ interface props {
   type: string;
   value: string;
   name: string;
-  className: string,
+  className: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 

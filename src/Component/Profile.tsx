@@ -21,9 +21,11 @@ export const Profile = () => {
 
   useEffect(() => {
     async function fetchProfile() {
+      
       try {
+        
         const response: any = await api.get("/profile");
-
+        
         setProfile({ ...response.data });
       } catch (err: any) {
         console.log(err.response);
@@ -38,7 +40,6 @@ export const Profile = () => {
     history.push("/login");
     window.location.reload(); 
   };
-
 
 
 

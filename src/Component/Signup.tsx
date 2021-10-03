@@ -22,8 +22,6 @@ export const Signup = () => {
     password: "",
   });
 
-  console.log("status -> ", status);
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setState({
       ...status,
@@ -90,9 +88,9 @@ export const Signup = () => {
             />
             <Button type="submit" des="Siguiente" />
             <span className="btnNew">
-              ¿Nuevo por aquí?{" "}
+              ¿Tienes una cuenta?{" "}
               <Link className="textDecoration" to={"/login"}>
-                Crear cuenta.
+                Entrar.
               </Link>
             </span>
           </div>
