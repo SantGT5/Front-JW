@@ -64,8 +64,9 @@ export const Login = (props: any) => {
         "loggedInUser",
         JSON.stringify({ ...response.data })
       );
-
+      
       response && history.push("/profile");
+      window.location.reload(); 
     } catch (err: any) {
       console.log(err.response);
 
