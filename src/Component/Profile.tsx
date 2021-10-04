@@ -24,7 +24,9 @@ export const Profile = () => {
 
   useEffect(() => {
     async function fetchProfile() {
+      
       try {
+        
         const response: any = await api.get("/profile");
 
         setProfile({ ...response.data });
@@ -39,6 +41,8 @@ export const Profile = () => {
             },
           })
         );
+
+        
       } catch (err: any) {
         console.log(err.response);
       }

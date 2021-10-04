@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import api from "../api/api";
+import { Button } from "../Global/Button";
 
 import { Input } from "../Global/Input";
 
@@ -8,10 +10,13 @@ interface foundUser {
   map?: any;
 }
 
-export const Search = () => {
-  const [status, setStatus] = useState<foundUser>([]);
+interface user {
+  data: [];
+}
 
-  console.log("status search -> ", status);
+export const Search = () => {
+  const [status, setStatus] = useState<foundUser>({});
+  const [user, setUser] = useState<user[]>([]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setStatus({
@@ -25,31 +30,44 @@ export const Search = () => {
       try {
         const response: any = await api.post("/search", { name: status.name });
 
-        setStatus({ ...response.data });
+        setUser([...response.data]);
       } catch (err: any) {
         console.log(err.response);
       }
     }
     fetchSearch();
-  }, [status.name]);
+  }, [status]);
 
   return (
     <div>
-      <Input
-        label="Buscar"
-        type="text"
-        value={status.name}
-        name="name"
-        className="margin form-control"
-        onChange={handleChange}
-      />
-      <ol>
-        {status.map((elem: any) => {
+      <div className="center fit editeSIZE">
+        <Input
+          autocomplete="off"
+          label="Buscar perfiles"
+          type="text"
+          value={status.name}
+          name="name"
+          className="margin form-control"
+          onChange={handleChange}
+        />
 
-            <li>{elem.name}</li>
-
-        })}
-      </ol>
+        {user.length && status.name !== "" ? (
+          <ol style={{ padding: "0em", marginTop: "0.5em" }}>
+            {user.map((elem: any, i) => {
+              return (
+                <li className="between textDecoration marginBottom" key={i}>
+                  {elem.name}
+                  <Link to={ `/edite/${ elem._id }` } type="button">
+                    <Button type="button" des="Detalles" />
+                  </Link>
+                </li>
+              );
+            })}
+          </ol>
+        ) : (
+          <></>
+        )}
+      </div>
     </div>
   );
 };

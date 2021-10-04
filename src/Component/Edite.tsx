@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 import swal from "sweetalert";
 import Swal from "sweetalert2";
 import api from "../api/api";
@@ -19,6 +19,7 @@ interface edite {
 export const Edite = () => {
   const storedUser = localStorage.getItem("loggedInUser");
   const loggedInUser = JSON.parse(storedUser || '""');
+  const params:{id:string} = useParams();
   const history = useHistory();
   const [status, setStatus] = useState<edite>({
     name: "",
@@ -27,7 +28,7 @@ export const Edite = () => {
     _id: "",
   });
 
-  console.log(loggedInUser.user);
+  console.log(params.id);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setStatus({
@@ -39,7 +40,7 @@ export const Edite = () => {
   useEffect(() => {
     async function fetchEdite() {
       try {
-        const response: any = await api.get("/profile");
+        const response: any = await api.post(`/founduser/${params.id}`);
 
         setStatus({ ...response.data });
       } catch (err: any) {

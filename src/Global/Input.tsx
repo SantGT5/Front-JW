@@ -4,6 +4,7 @@ interface props {
   value: string;
   name: string;
   className: string;
+  autocomplete?: string
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
@@ -17,6 +18,7 @@ export const Input = (props: props) => {
           type={props.type}
           value={props.value}
           name={props.name}
+          autoComplete={ props.autocomplete }
           onChange={props.onChange}
         />
       </div>

@@ -129,4 +129,18 @@
 
 .textDecoration{
   text-decoration: none;
+  list-style: none;
+}
+
+.marginBottom{
+
+  margin-bottom: 1em;
+}
+
+.between{
+
+display: flex;
+justify-content: space-between;
+align-items: center;
+
 }
