@@ -15,7 +15,7 @@ export const NavBar = () => {
         <Link className="btnNav" to={"/profile"}>
           Mi perfil
         </Link>
-        <Link className="btnNav" to={"/newmeeting"}>
+        <Link className="btnNav" to={"/meeting"}>
           Nueva Reunión
         </Link>
       </div>

@@ -10,6 +10,7 @@ import { Profile } from "./Component/Profile";
 import { Edite } from "./Component/Edite";
 import { Signup } from "./Component/Signup";
 import { Search } from "./Component/Search"
+import { Meeting } from "./Component/Meeting";
 import { Test } from "./Component/Test";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <PrivateRoute exact path="/edite/:id" component={Edite} />
           <PrivateRoute exact path="/profile" component={Profile} />
           <PrivateRoute exact path="/search" component={Search} />
+          <PrivateRoute exact path="/meeting/:id" component={Meeting} />
           <PrivateRoute exact path="/" component={Test} />
 
           {loggedInUser.token ? (
