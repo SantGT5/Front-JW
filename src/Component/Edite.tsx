@@ -28,8 +28,6 @@ export const Edite = () => {
     _id: "",
   });
 
-  console.log(params.id);
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setStatus({
       ...status,

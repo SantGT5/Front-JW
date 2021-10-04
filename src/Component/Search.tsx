@@ -64,9 +64,9 @@ export const Search = () => {
               );
             })}
           </ol>
-        ) : (
-          <></>
-        )}
+        ) : !user.length && !status.name ?
+        <></> : <h6>Nombre de perfil inválido</h6>
+        }
       </div>
     </div>
   );
