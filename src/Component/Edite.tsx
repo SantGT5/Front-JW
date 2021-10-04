@@ -19,7 +19,7 @@ interface edite {
 export const Edite = () => {
   const storedUser = localStorage.getItem("loggedInUser");
   const loggedInUser = JSON.parse(storedUser || '""');
-  const params:{id:string} = useParams();
+  const params: { id: string } = useParams();
   const history = useHistory();
   const [status, setStatus] = useState<edite>({
     name: "",
