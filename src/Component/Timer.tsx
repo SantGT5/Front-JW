@@ -40,11 +40,13 @@ export const Timer = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div style={{ display: "flex" }} className="center date button-section">
-        <Button type="button" des="add" onClick={addFormFields} />
+        <Button type="button" des="Agregar" onClick={addFormFields} />
 
         <div className="spaceBTN ">
           <Button type="submit" des="Guardar" />
         </div>
+
+        <Button type="button" des="Remover" onClick={() => setRemove(true)} />
       </div>
       <div className="center fit">
         {formValues.map((element: form, index: number) => (
@@ -93,13 +95,7 @@ export const Timer = () => {
                 </div>
               </div>
             ) : (
-              <div className="sizeBTN center">
-                <Button
-                  type="button"
-                  des="Remover"
-                  onClick={() => setRemove(true)}
-                />
-              </div>
+              <></>
             )}
           </div>
         ))}
