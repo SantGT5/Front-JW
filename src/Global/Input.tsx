@@ -1,7 +1,7 @@
 interface props {
   label: string;
   type: string;
-  value: string;
+  value: string | number;
   name: string;
   className: string;
   autocomplete?: string

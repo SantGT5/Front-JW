@@ -150,6 +150,17 @@ align-items: center;
 }
 
 
+.sizeBTN{
+
+  width: fit-content;
+  margin: 0.3em;
+
+}
+
+.flex{
+  display: flex;
+}
+
 .loader {
   border: 10px solid #f3f3f3;
   border-radius: 50%;

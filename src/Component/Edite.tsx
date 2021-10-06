@@ -46,7 +46,7 @@ export const Edite = () => {
       }
     }
     fetchEdite();
-  }, []);
+  }, [params.id]);
 
   async function handleSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
