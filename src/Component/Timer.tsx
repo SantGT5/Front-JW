@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useParams } from "react-router";
-import Swal from 'sweetalert2'
 import api from "../api/api";
 
 import { Button } from "../Global/Button";
@@ -13,7 +12,7 @@ interface form {
 }
 
 export const Timer = () => {
-  const params: { id: string } = useParams()
+  const params: { id: string } = useParams();
   const [formValues, setFormValues] = useState<form[]>([]);
 
   const [remove, setRemove] = useState(false);
@@ -35,28 +34,17 @@ export const Timer = () => {
     setFormValues(newFormValues);
   };
 
-async function handleSubmit(event: React.SyntheticEvent){
+  async function handleSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
     // alert(JSON.stringify(formValues));
-try{
+    try {
+      const response = await api.post(`/meeting/${params.id}`, formValues);
 
-const response = await api.post( `/meeting/${params.id}`, formValues )
-
-console.log( response )
-
-Swal.fire({
-  position: 'top-end',
-  icon: 'success',
-  title: 'Your work has been saved',
-  showConfirmButton: false,
-  timer: 1500
-})
-
-}catch( err: any ){
-  console.log( err.response )
-}
-
-  };
+      console.log(response);
+    } catch (err: any) {
+      console.log(err.response);
+    }
+  }
 
   return (
     <form onSubmit={handleSubmit}>
