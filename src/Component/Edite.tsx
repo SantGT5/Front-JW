@@ -152,7 +152,7 @@ export const Edite = () => {
             />
 
             <Radios
-              label="CONVIDADO"
+              label="INVITADO"
               type="radio"
               value="CONVIDADO"
               name="role"

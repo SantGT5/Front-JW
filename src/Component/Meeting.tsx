@@ -4,7 +4,7 @@ import { Input } from "../Global/Input";
 import { Timer } from "../Component/Timer";
 
 interface dateUpdate {
-  now: "" | {};
+  now: {};
 }
 
 export const Meeting = () => {
@@ -30,7 +30,7 @@ export const Meeting = () => {
 
     setDate({ now: result });
   }
-  setTimeout(display_ct6, 1000);
+  // setTimeout(display_ct6, 1000);
 
   return (
     <div>

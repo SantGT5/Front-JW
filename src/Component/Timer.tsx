@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import api from "../api/api";
 
 import { Button } from "../Global/Button";
+import { BtnStopWatch } from "../Global/BtnStopWatch";
 import { Input } from "../Global/Input";
 
 interface form {
   name: string;
   assignation: string;
-  tiempo: number;
+  tiempo: string;
 }
 
 export const Timer = () => {
@@ -24,7 +25,7 @@ export const Timer = () => {
   };
 
   const addFormFields = () => {
-    setFormValues([...formValues, { name: "", assignation: "", tiempo: 0 }]);
+    setFormValues([...formValues, { name: "", assignation: "", tiempo: "0:0:0" }]);
   };
 
   const removeFormFields = (i: number) => {
@@ -34,9 +35,78 @@ export const Timer = () => {
     setFormValues(newFormValues);
   };
 
+
+  
+  ////////////////
+
+
+  const [time, setTime] = useState<any>({s:0, m: 0});
+  const [interv, setInterv] = useState<any>()
+  const [status, setStatus] = useState(0)
+
+  const start = () => {
+    run()
+    setStatus(1)
+    setInterv(setInterval(run, 1000))
+    
+  }
+    
+
+  useEffect(() => {
+
+    run()
+
+  }, [status === 1])
+  
+
+  const run = () => {
+    let updatedS = time.s, updatedM = time.m
+
+    if(updatedM === 60) {
+      updatedM = 0
+    }
+    if(updatedS === 60) {
+      updatedM++
+      updatedS = 0
+    }
+    updatedS++
+    setTime({s: updatedS, m: updatedM})
+  }
+  const stop = () => {
+    clearInterval(interv)
+    setStatus(2)
+  }
+  const reset = () => {
+    clearInterval(interv)
+    setStatus(0)
+    setTime({s:0, m: 0})
+  }
+  
+  const resume = () => start()
+
+
+
+  const h = () => {
+    if(time.h === 0) {
+      return ''
+    } else {
+      return <span>{(time.h >= 10)? time.h : '0'+ time.h} : </span>
+    }
+  }
+
+
+const timer = `${time.m}:${time.s}`
+
+console.log(time)
+
+  ////////////////
+
+
+
+
+
   async function handleSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
-    // alert(JSON.stringify(formValues));
     try {
       const response = await api.post(`/meeting/${params.id}`, formValues);
 
@@ -60,6 +130,7 @@ export const Timer = () => {
       <div className="center fit">
         {formValues.map((element: form, index: number) => (
           <div style={{ display: "flex" }} key={index}>
+            
             <Input
               label="Nombre"
               className="margin form-control"
@@ -78,14 +149,32 @@ export const Timer = () => {
               onChange={(e) => handleChange(index, e)}
             />
 
+
+
+
+
             <Input
               label="Tiempo"
               className="margin form-control"
-              type="number"
+              type="text"
               name="tiempo"
-              value={element.tiempo || ""}
+              value={timer}
               onChange={(e) => handleChange(index, e)}
             />
+
+
+            <BtnStopWatch 
+              status={status}
+              start={start}
+              stop={stop}
+              reset={reset}
+              resume={resume}
+            />
+
+
+
+
+
             {remove === true ? (
               <div className="flex">
                 <div className="sizeBTN center">
