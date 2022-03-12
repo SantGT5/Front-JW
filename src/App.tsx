@@ -9,7 +9,9 @@ import { NavBar } from "./Component/NavBar";
 import { Profile } from "./Component/Profile";
 import { Edite } from "./Component/Edite";
 import { Signup } from "./Component/Signup";
-import { Test } from "./Component/Test";
+import { Search } from "./Component/Search";
+import { Meeting } from "./Component/Meeting";
+
 
 function App() {
   const storedUser = localStorage.getItem("loggedInUser");
@@ -23,10 +25,11 @@ function App() {
         <Switch>
           <PrivateRoute exact path="/edite/:id" component={Edite} />
           <PrivateRoute exact path="/profile" component={Profile} />
-          <PrivateRoute exact path="/" component={Test} />
+          <PrivateRoute exact path="/search" component={Search} />
+          <PrivateRoute exact path="/meeting/:id" component={Meeting} />
 
           {loggedInUser.token ? (
-            <Route exact path="/" component={Test} />
+            <Route exact path="/profile" component={Profile} />
           ) : (
             <BrowserRouter>
               <Switch>

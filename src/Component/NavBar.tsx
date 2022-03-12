@@ -1,7 +1,11 @@
 import imgLogo from "../img/logo.png";
 import { Link } from "react-router-dom";
+import uniqid from 'uniqid';
 
 export const NavBar = () => {
+
+const mettingID = uniqid("", "jw") + uniqid("-1914-", "")
+
   return (
     <div>
       <div>
@@ -15,7 +19,7 @@ export const NavBar = () => {
         <Link className="btnNav" to={"/profile"}>
           Mi perfil
         </Link>
-        <Link className="btnNav" to={"/newmeeting"}>
+        <Link className="btnNav" to={`/meeting/${mettingID}`}>
           Nueva Reunión
         </Link>
       </div>

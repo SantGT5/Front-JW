@@ -4,6 +4,7 @@ interface props {
   label: string;
   name: string;
   checked: boolean;
+  disabled: boolean
   htmlFor: string;
   id: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
@@ -20,6 +21,7 @@ export const Radios = (props: props) => {
         value={props.value}
         onChange={props.onChange}
         checked={props.checked}
+        disabled={ props.disabled }
       />
       <label className="form-check-label" htmlFor={props.htmlFor}>
         {props.label}

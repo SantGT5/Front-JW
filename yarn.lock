@@ -2136,6 +2136,11 @@
   dependencies:
     "source-map" "^0.6.1"
 
+"@types/uniqid@^5.3.1":
+  "integrity" "sha512-XNXc2abchKzhV8278+lxDOLEB6P8lslIczu7TTvY2+uyHWos3EVI6pNejJ5rLyOieZL22X6ZEepCOfXghSQw/w=="
+  "resolved" "https://registry.npmjs.org/@types/uniqid/-/uniqid-5.3.1.tgz"
+  "version" "5.3.1"
+
 "@types/webpack-sources@*":
   "integrity" "sha512-LXn/oYIpBeucgP1EIJbKQ2/4ZmpvRl+dlrFdX7+94SKRUV3Evy3FsfMZY318vGhkWUS5MPhtOM3w1/hCOAOXcg=="
   "resolved" "https://registry.npmjs.org/@types/webpack-sources/-/webpack-sources-2.1.0.tgz"
@@ -7302,18 +7307,6 @@
     "array-includes" "^3.1.2"
     "object.assign" "^4.1.2"
 
-"jwt-check-expiration@^1.0.5":
-  "integrity" "sha512-Ov2A7f/zwiZ8wvi6KG+Jeb6am1pvwgcms+HytB4GMPzrCf5UfytnlBVRh9a39Hi2v91H3aETtXHZreB8BTdbUQ=="
-  "resolved" "https://registry.npmjs.org/jwt-check-expiration/-/jwt-check-expiration-1.0.5.tgz"
-  "version" "1.0.5"
-  dependencies:
-    "jwt-decode" "^2.2.0"
-
-"jwt-decode@^2.2.0":
-  "integrity" "sha1-fYa9VmefWM5qhHBKZX3TkruoGnk="
-  "resolved" "https://registry.npmjs.org/jwt-decode/-/jwt-decode-2.2.0.tgz"
-  "version" "2.2.0"
-
 "killable@^1.0.1":
   "integrity" "sha512-LzqtLKlUwirEUyl/nicirVmNiPvYs7l5n8wOPP7fyJVpUPkvCnW/vuiXGpylGUlnPDnB7311rARzAt3Mhswpjg=="
   "resolved" "https://registry.npmjs.org/killable/-/killable-1.0.1.tgz"
@@ -11149,6 +11142,11 @@
     "es6-object-assign" "^1.1.0"
     "promise-polyfill" "^6.0.2"
 
+"sweetalert2@^11.1.7":
+  "integrity" "sha512-7MHQVtKCTORfA9e58g9ZOfT3X58DkSBtvoCQJnqSHobXXb5C7aB8Yg/tAccTFnefCUBU41PoStjXMkzG3bNeig=="
+  "resolved" "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.1.7.tgz"
+  "version" "11.1.7"
+
 "symbol-tree@^3.2.4":
   "integrity" "sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw=="
   "resolved" "https://registry.npmjs.org/symbol-tree/-/symbol-tree-3.2.4.tgz"
@@ -11563,6 +11561,11 @@
   "integrity" "sha1-sxxa6CVIRKOoKBVBzisEuGWnNP8="
   "resolved" "https://registry.npmjs.org/uniq/-/uniq-1.0.1.tgz"
   "version" "1.0.1"
+
+"uniqid@^5.4.0":
+  "integrity" "sha512-38JRbJ4Fj94VmnC7G/J/5n5SC7Ab46OM5iNtSstB/ko3l1b5g7ALt4qzHFgGciFkyiRNtDXtLNb+VsxtMSE77A=="
+  "resolved" "https://registry.npmjs.org/uniqid/-/uniqid-5.4.0.tgz"
+  "version" "5.4.0"
 
 "uniqs@^2.0.0":
   "integrity" "sha1-/+3ks2slKQaW5uFl1KWe25mOawI="
